@@ -2,14 +2,11 @@
   "name": "sayla/data-helper",
   "description": "Framework agnostic data objects and helpers",
   "require": {
-    "php": ">=5"
-  },
-  "require-dev": {
+    "php": ">=7"
   },
   "autoload": {
     "psr-4": {
       "Sayla\\Helper\\Data\\": "src"
     }
-  },
-  "minimum-stability": "dev"
+  }
 }
