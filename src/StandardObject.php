@@ -4,17 +4,11 @@ namespace Sayla\Helper\Data;
 
 class StandardObject extends \stdClass implements \ArrayAccess
 {
-	/**
-	 * @param iterable $data
-	 * @return static
-	 */
-	public static function make($data)
+	public static function make(iterable $items)
 	{
 		$obj = new static();
-		if (isset($data)) {
-			foreach ($data as $k => $v) {
-				$obj->$k = $v;
-			}
+		foreach ($items as $k => $v) {
+			$obj->$k = $v;
 		}
 		return $obj;
 	}
