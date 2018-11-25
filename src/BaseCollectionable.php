@@ -5,7 +5,7 @@ namespace Sayla\Helper\Data;
  * @method push($item)
  * @method put($key, $item)
  */
-abstract class BaseArrayObject implements Contract\ArrayObject
+abstract class BaseCollectionable implements Contract\Collectionable
 {
     protected $items = [];
 
@@ -18,6 +18,23 @@ abstract class BaseArrayObject implements Contract\ArrayObject
      * @return array
      */
     public function getArrayCopy(): array
+    {
+        return $this->items;
+    }
+
+    public function offsetExists($offset)
+    {
+        return array_key_exists($offset, $this->items);
+    }
+
+    abstract public function offsetSet($offset, $value);
+
+    public function offsetUnset($offset)
+    {
+        unset($this->items[$offset]);
+    }
+
+    protected function &getArrayData()
     {
         return $this->items;
     }
@@ -37,16 +54,9 @@ abstract class BaseArrayObject implements Contract\ArrayObject
         return $dataArray;
     }
 
-    public function offsetExists($offset)
+    protected function setArrayData(array $data)
     {
-        return array_key_exists($offset, $this->items);
-    }
-
-    abstract public function offsetSet($offset, $value);
-
-    public function offsetUnset($offset)
-    {
-        unset($this->items[$offset]);
+        $this->items = $data;
     }
 
     /**
@@ -57,16 +67,6 @@ abstract class BaseArrayObject implements Contract\ArrayObject
     public function toArray()
     {
         return $this->items;
-    }
-
-    protected function &getArrayData()
-    {
-        return $this->items;
-    }
-
-    protected function setArrayData(array $data)
-    {
-        $this->items = $data;
     }
 
     /**
