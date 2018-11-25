@@ -1,13 +1,11 @@
 <?php
 
 namespace Sayla\Helper\Data\Contract;
-
-interface ArrayObject extends \ArrayAccess, \IteratorAggregate, \JsonSerializable, \Countable
+/**
+ * Interface ArrayObject
+ * @deprecated 
+ */
+interface ArrayObject extends Collectionable
 {
-
-    /**
-     * @return array
-     */
-    public function getArrayCopy(): array;
 
 }
