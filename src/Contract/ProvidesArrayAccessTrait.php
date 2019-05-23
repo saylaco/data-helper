@@ -1,30 +1,17 @@
 <?php
 
 namespace Sayla\Helper\Data\Contract;
-
+/**
+ * Trait ProvidesArrayAccessTrait
+ * @package Sayla\Helper\Data\Contract
+ * @deprecated use DecoratesAccessibleArray
+ */
 trait ProvidesArrayAccessTrait
 {
-    private static $arrayablePropertyName = 'items';
-    /**
-     * Offset to retrieve
-     */
-    public function offsetGet($offset)
-    {
-        return $this->{self::$arrayablePropertyName}[$offset];
-    }
+    use DecoratesAccessibleArray;
 
-    /**
-     * Offset to set
-     */
-    public function offsetSet($offset, $value)
-    {
-        $this->{self::$arrayablePropertyName}[$offset] = $value;
-    } /**
-     * Offset to set
-     */
     public function getIterator()
     {
-        return new \ArrayIterator($this->{self::$arrayablePropertyName});
+        return new \ArrayIterator($this->getDecoratedArray());
     }
-
 }

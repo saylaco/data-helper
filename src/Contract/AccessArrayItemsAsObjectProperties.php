@@ -3,6 +3,7 @@
 namespace Sayla\Helper\Data\Contract;
 /**
  * Trait AccessArrayItemsAsObjectProperties
+ * @mixin \ArrayAccess
  */
 trait AccessArrayItemsAsObjectProperties
 {

@@ -22,6 +22,11 @@ abstract class BaseArrayObject implements Contract\ArrayObject
         return $this->items;
     }
 
+    protected function &getArrayData()
+    {
+        return $this->items;
+    }
+
     public function jsonSerialize()
     {
         $dataArray = [];
@@ -49,6 +54,11 @@ abstract class BaseArrayObject implements Contract\ArrayObject
         unset($this->items[$offset]);
     }
 
+    protected function setArrayData(array $data)
+    {
+        $this->items = $data;
+    }
+
     /**
      * Get the instance as an array.
      *
@@ -59,20 +69,10 @@ abstract class BaseArrayObject implements Contract\ArrayObject
         return $this->items;
     }
 
-    protected function &getArrayData()
-    {
-        return $this->items;
-    }
-
-    protected function setArrayData(array $data)
-    {
-        $this->items = $data;
-    }
-
     /**
      * Convert the object to its JSON representation.
      *
-     * @param  int $options
+     * @param int $options
      * @return string
      */
     public function toJson($options = 0)

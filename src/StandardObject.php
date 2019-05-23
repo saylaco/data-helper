@@ -44,7 +44,7 @@ abstract class StandardObject extends \stdClass
             return self::$cache[static::PROP_METHOD_CACHE_KEY]['m_' . $method];
 
         }
-        $exists = method_exists(static::class, $method);
+        $exists = method_exists($this, $method);
         if ($this->usingCache()) {
             self::$cache[static::PROP_METHOD_CACHE_KEY]['m_' . $method] = $exists;
         }

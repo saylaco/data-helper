@@ -3,7 +3,6 @@
 namespace Sayla\Helper\Data;
 /**
  * @method put($key, $item)
- * @method get($key)
  */
 abstract class BaseHashMap extends BaseCollectionable
 {
@@ -15,15 +14,15 @@ abstract class BaseHashMap extends BaseCollectionable
         return $this;
     }
 
-    final public function offsetGet($offset)
+    public function offsetGet($offset)
     {
         if (!$this->offsetExists($offset)) {
             throw new \UnexpectedValueException($offset . ' is not defined');
         }
-        return $this->get($offset);
+        return $this->items[$offset];
     }
 
-    final public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value)
     {
         $this->put($offset, $value);
     }

@@ -27,8 +27,6 @@ abstract class BaseCollectionable implements Contract\Collectionable
         return array_key_exists($offset, $this->items);
     }
 
-    abstract public function offsetSet($offset, $value);
-
     public function offsetUnset($offset)
     {
         unset($this->items[$offset]);
